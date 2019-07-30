@@ -14,6 +14,7 @@ class Course(models.Model):
 	name =models.CharField('Nome', max_length=100)
 	slug=models.SlugField('Atalho')
 	description = models.TextField('Descrição', blank=True)
+	about = models.TextField('Sobre o curso', blank=True)
 	start_date=models.DateField(
 		'Data de Inicio', null=True,blank=True
 	)
@@ -32,7 +33,7 @@ class Course(models.Model):
 	objects=CourseManager()	
 
 	def __str__(self):
-		return self.name	
+		return self.name	 
 
 	class Meta():
 		verbose_name='Curso'
