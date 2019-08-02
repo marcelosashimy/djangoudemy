@@ -26,20 +26,30 @@ def courses(request):
 #	return render(request, template_name, context)
 
 
-def details(request, slug):
+#adef details(request, slug):
 	#course= Course.objects.get(pk=pk)
 	#Course é uma model
-	course=get_object_or_404(Course, slug=slug)
-	if request.method =='POST':
-		form=ContactCourse(request.POST)
-	else:
-		form=ContactCourse()
-	context = {
-		'course':course,
-		'form':form
-	}
-	template_name = 'courses/details.html'
-	return render(request, template_name, context)
+def details(request, slug):
+    course = get_object_or_404(Course, slug=slug)
+    context = {}
+    if request.method == 'POST':
+        form = ContactCourse(request.POST)
+        if form.is_valid():
+            context['is_valid'] = True
+            form.send_mail(course)
+            form = ContactCourse()
+    else:
+        form = ContactCourse()
+    context['form'] = form
+    context['course'] = course
+    template_name = 'courses/details.html'
+    return render(request, template_name, context)
+#	context = {
+#		'course':course,
+#		'form':form
+#	}
+#	template_name = 'courses/details.html'
+#	return render(request, template_name, context)
 
 
 		

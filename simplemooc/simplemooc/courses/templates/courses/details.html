@@ -55,6 +55,7 @@
                 <div class="pure-control-group">
                     {{ field.label_tag }}
                     {{ field }}
+                    <!--  é mais facil usar para os erros apenas if field.errors -->
                     {% if field.errors %}
                     <ul class="errorlist">
                         {% for error in field.errors %}
