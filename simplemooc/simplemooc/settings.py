@@ -142,6 +142,6 @@ EMAIL_PORT = 587
 CONTACT_EMAIL = 'contato@simplemooc.com'
 
 # Auth
-LOGIN_URL = 'login'#'accounts:login'
-LOGIN_REDIRECT_URL='home'#'core:home'
+LOGIN_URL = 'accounts:login'#'accounts:login'
+LOGIN_REDIRECT_URL='core:home'#'core:home'
 LOGOUT_URL='accounts:logout'
